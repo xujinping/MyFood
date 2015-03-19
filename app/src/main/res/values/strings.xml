@@ -22,4 +22,6 @@
     <string name="burden">调料</string>
     <string name="step">步骤</string>
 
+    <string name="tips">请输入你想要查询的菜谱名称</string>
+
 </resources>

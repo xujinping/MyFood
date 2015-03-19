@@ -10,4 +10,6 @@ public class Key {
     public final static String CID = "cid";
     public final static String CATEGORY = "category";
     public final static String DETAILS = "details";
+    public final static String WHICH = "which";
+    public final static String NAME = "name";
 }

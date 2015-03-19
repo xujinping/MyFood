@@ -39,11 +39,17 @@ public class ImageBrowerActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_image_brower);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        setContentView(R.layout.activity_image_brower);
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         getIntentData();
         initView();
+    }
+
+    @Override
+    protected int getContentView() {
+        return R.layout.activity_image_brower;
     }
 
     private void initView() {

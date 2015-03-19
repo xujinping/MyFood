@@ -1,12 +1,15 @@
-package com.xjp.myapp.activity;
+package com.xjp.myapp.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.android.volley.VolleyError;
 import com.xjp.myapp.R;
+import com.xjp.myapp.activity.DetailActivity;
 import com.xjp.myapp.adapter.CategoryAdapter;
 import com.xjp.myapp.beans.Index.Datum;
 import com.xjp.myapp.beans.Index.Index;
@@ -22,73 +25,51 @@ import java.util.Locale;
 /**
  * Description:
  * User: xjp
- * Date: 2015/3/11
- * Time: 16:53
+ * Date: 2015/3/19
+ * Time: 11:24
  */
-public class CategoryActivity extends BaseHttpActivity implements XListView.IXListViewListener, AdapterView.OnItemClickListener {
-    private XListView mListView;
-    private CategoryAdapter mAdapter;
-    private String name;
-    private String category;
+public class CategoryFragment extends BaseHttpFragment implements AdapterView.OnItemClickListener,
+        XListView.IXListViewListener {
+    private String cid;
     private final static int PAGE = 15;
     private int loadNum = 0;
     private String url;
     private int totalNum = 0;
     private List<Datum> datumList;
+    private XListView mListView;
+    private CategoryAdapter mAdapter;
 
     @Override
-    protected void initView() {
-//        setContentView(R.layout.activity_category);
-        mListView = (XListView) findViewById(R.id.lv_category);
+    protected void reLoad() {
+        String strUrl = url + loadNum * PAGE;
+        get(strUrl, Index.class);
     }
 
     @Override
-    protected void initData() {
-        Intent intent = getIntent();
-        name = intent.getStringExtra(Key.NAME);
-//        category = intent.getStringExtra(Key.CATEGORY);
+    protected void loadData() {
+        url = Urls.INDEX + cid + "&rn=" + PAGE + "&pn=";
+        get(url, Index.class);
+    }
 
+    @Override
+    protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_category, null);
+        mListView = (XListView) view.findViewById(R.id.lv_category);
         mListView.setOnItemClickListener(this);
         mListView.setPullRefreshEnable(true);
         mListView.setPullLoadEnable(true);
         mListView.setAutoLoadEnable(true);
         mListView.setXListViewListener(this);
         mListView.setRefreshTime(getTime());
-        mAdapter = new CategoryAdapter(this);
+        mAdapter = new CategoryAdapter(mActivity);
         mListView.setAdapter(mAdapter);
+
+        return view;
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        actionBar.setTitle(category);
-    }
-
-    @Override
-    protected int getContentView() {
-        return R.layout.activity_category;
-    }
-
-    /**
-     * 获取时间格式
-     *
-     * @return
-     */
-    private String getTime() {
-        return new SimpleDateFormat("MM-dd HH:mm", Locale.CHINA).format(new Date());
-    }
-
-    @Override
-    protected void loadData() {
-        url = Urls.QUERY_NAME + name;
-        get(url, Index.class);
-        showLog(url);
-    }
-
-    @Override
-    protected void reLoad() {
-        String strUrl = url;
-        get(strUrl, Index.class);
+    protected void getBundle() {
+        cid = getArguments().getString(Key.CID);
     }
 
     @Override
@@ -105,8 +86,9 @@ public class CategoryActivity extends BaseHttpActivity implements XListView.IXLi
 
     }
 
+
     @Override
-    public void onRefresh() {//下拉刷新
+    public void onRefresh() {
         //下拉刷新前清除所有数据
         mAdapter.clearAllData();
         get(url, Index.class);
@@ -118,7 +100,6 @@ public class CategoryActivity extends BaseHttpActivity implements XListView.IXLi
         mListView.stopLoadMore();
         mListView.setRefreshTime(getTime());
     }
-
 
     @Override
     public void onLoadMore() { //上拉刷新
@@ -139,10 +120,19 @@ public class CategoryActivity extends BaseHttpActivity implements XListView.IXLi
     }
 
     private void startActivity(int position) {
-        Intent intent = new Intent(this, DetailActivity.class);
+        Intent intent = new Intent(mActivity, DetailActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable(Key.DETAILS, mAdapter.getAllData().get(position - 1));
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    /**
+     * 获取时间格式
+     *
+     * @return
+     */
+    private String getTime() {
+        return new SimpleDateFormat("MM-dd HH:mm", Locale.CHINA).format(new Date());
     }
 }

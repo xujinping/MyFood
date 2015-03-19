@@ -5,15 +5,18 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.xjp.myapp.R;
 import com.xjp.myapp.application.MyApplication;
 import com.xjp.myapp.utils.MyLog;
 
 /**
  * User :xjp
  */
-public class BaseActivity extends Activity {
+public abstract class BaseActivity extends Activity {
     private String TAG;
     protected boolean isHideActionBar = false;
     protected ActionBar actionBar;
@@ -24,13 +27,6 @@ public class BaseActivity extends Activity {
         TAG = this.getClass().getSimpleName();
         MyLog.d(TAG, "===onCreate===");
         MyApplication.instance.addActivity(this);
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        MyLog.d(TAG, "===onStart===");
         actionBar = getActionBar();
         //是否隐藏 ActionBar
         if (null != actionBar && isHideActionBar) {
@@ -40,6 +36,23 @@ public class BaseActivity extends Activity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+        setContentView(getContentView());
+        ImageButton search = (ImageButton) findViewById(R.id.btn_search);
+        if (null != search) {
+            search.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(SearchActivity.class);
+                }
+            });
+        }
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        MyLog.d(TAG, "===onStart===");
     }
 
     @Override
@@ -130,4 +143,6 @@ public class BaseActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    protected abstract int getContentView();
 }

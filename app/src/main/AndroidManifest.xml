@@ -31,6 +31,13 @@
         <activity
             android:name=".activity.ImageBrowerActivity"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.Category1Activity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.SearchActivity"
+            android:label="搜索"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

@@ -48,7 +48,6 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
     }
 
     protected void initView() {
-        setContentView(R.layout.activity_detail);
         txtContent = (TextView) findViewById(R.id.tv_content);
         imgTop = (NetworkImageView) findViewById(R.id.img_top);
         myListView = (MyListView) findViewById(R.id.lv_setp);
@@ -57,6 +56,7 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
 
         linearLayout1 = (LinearLayout) findViewById(R.id.ll_mtrls);
         linearLayout2 = (LinearLayout) findViewById(R.id.ll_burden);
+
     }
 
     protected void initData() {
@@ -133,5 +133,10 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         bundle.putSerializable(Key.DETAILS, mData);
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    @Override
+    protected int getContentView() {
+        return R.layout.activity_detail;
     }
 }

@@ -1,6 +1,8 @@
 package com.xjp.myapp.beans.Category;
 
-public class List {
+import java.io.Serializable;
+
+public class List implements Serializable{
 
     private String id;
     private String name;

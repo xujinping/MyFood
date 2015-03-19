@@ -5,11 +5,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 
-
-import com.xjp.myapp.activity.CategoryActivity;
+import com.xjp.myapp.activity.Category1Activity;
 import com.xjp.myapp.beans.Category.List;
 import com.xjp.myapp.beans.Category.Result;
-import com.xjp.myapp.R;
+
+import java.io.Serializable;
 
 /**
  * Description:
@@ -31,17 +31,17 @@ public class ShowDialog {
         dialog.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                startActivity(context, (list.get(which).getId()), list.get(which).getName());
+                startActivity(context, list, which);
             }
         });
         AlertDialog alertDialog = dialog.create();
         alertDialog.show();
     }
 
-    private static void startActivity(Context context, String cid, String name) {
-        Intent intent = new Intent(context, CategoryActivity.class);
-        intent.putExtra(Key.CID, cid);
-        intent.putExtra(Key.CATEGORY, name);
+    private static void startActivity(Context context, java.util.List<List> list, int which) {
+        Intent intent = new Intent(context, Category1Activity.class);
+        intent.putExtra(Key.CATEGORY, (Serializable) list);
+        intent.putExtra(Key.WHICH, which);
         context.startActivity(intent);
     }
 

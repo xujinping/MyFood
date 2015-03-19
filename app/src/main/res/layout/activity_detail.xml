@@ -78,11 +78,11 @@
                 <TextView
                     android:id="@+id/tv_detail_big"
                     android:layout_width="wrap_content"
-                    android:layout_alignParentRight="true"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
                     android:text="点击步骤查看大图"
-                    android:textSize="12sp"
-                    android:textColor="@color/text_gray" />
+                    android:textColor="@color/text_gray"
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:id="@+id/ll_cailiao"
@@ -152,5 +152,14 @@
         </LinearLayout>
 
     </com.xjp.myapp.widget.StickyScrollView>
+
+    <include
+        layout="@layout/item_search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"></include>
 
 </RelativeLayout>

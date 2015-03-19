@@ -1,50 +1,73 @@
 package com.xjp.myapp.activity;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.GridView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.android.volley.VolleyError;
 import com.xjp.materiallibrary.drawerlayout.ActionBarDrawerToggle;
 import com.xjp.materiallibrary.drawerlayout.DrawerArrowDrawable;
 import com.xjp.myapp.R;
-import com.xjp.myapp.adapter.MainAdapter;
-import com.xjp.myapp.adapter.MainDrawerAdapter;
-import com.xjp.myapp.beans.Category.Category;
-import com.xjp.myapp.beans.Category.Result;
-import com.xjp.myapp.utils.ShowDialog;
-import com.xjp.myapp.utils.Urls;
+import com.xjp.myapp.fragment.CategoryFragment;
+import com.xjp.myapp.utils.Key;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class MainActivity extends BaseHttpActivity implements AdapterView.OnItemClickListener {
+/**
+ * Description:
+ * User: xjp
+ * Date: 2015/3/19
+ * Time: 11:44
+ */
+public class Category1Activity extends BaseActivity implements AdapterView.OnItemClickListener {
 
     private DrawerLayout mDrawerLayout;
-    private GridView mGridView;
-    private MainAdapter mCategotyAdapter;
-    private List<Result> resultList;
     private ListView mListView;
     private DrawerArrowDrawable drawerArrow;
     private ActionBarDrawerToggle mDrawerToggle;
-    private MainDrawerAdapter mainDrawerAdapter;
-    private List<String> listData;
+    private List<com.xjp.myapp.beans.Category.List> mList;
+    private FragmentTransaction ft;
+    private Fragment fragment;
+
 
     @Override
-    protected void initView() {
-        mGridView = (GridView) findViewById(R.id.gv_category);
-        mListView = (ListView) findViewById(R.id.left_drawer);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        View headerView = LayoutInflater.from(this).inflate(R.layout.item_main_header, null);
-        mListView.addHeaderView(headerView);
+    protected void onCreate(Bundle savedInstanceState) {
+//        setContentView(R.layout.activity1_category);
+        super.onCreate(savedInstanceState);
+        initView();
+        initData();
     }
+
+
+    private void initView() {
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mListView = (ListView) findViewById(R.id.left_drawer);
+        initActionBar();
+    }
+
+    private void initData() {
+        mList = new ArrayList<>();
+        Intent intent = getIntent();
+        mList = (List<com.xjp.myapp.beans.Category.List>) intent.getSerializableExtra(Key.CATEGORY);
+        int i = mList.size();
+        String[] items = new String[i];
+        for (int j = 0; j < i; j++) {
+            items[j] = mList.get(j).getName();
+        }
+        mListView.setOnItemClickListener(this);
+        mListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1,
+                items));
+        replaceFragment(0);
+    }
+
 
     /**
      * 初始化导航栏成为 andorid5.0风格。
@@ -74,57 +97,20 @@ public class MainActivity extends BaseHttpActivity implements AdapterView.OnItem
         mDrawerToggle.syncState();
     }
 
+
     @Override
-    protected void initData() {
-
-        mainDrawerAdapter = new MainDrawerAdapter(this);
-        listData = new ArrayList<>();
-        listData.add("设置");
-        listData.add("分享");
-        mainDrawerAdapter.initAllData(listData);
-        mListView.setAdapter(mainDrawerAdapter);
-        mListView.setOnItemClickListener(this);
-
-        mCategotyAdapter = new MainAdapter(this);
-        mCategotyAdapter.initAllData(null);
-        mGridView.setAdapter(mCategotyAdapter);
-        mGridView.setOnItemClickListener(this);
-        initActionBar();
+    protected void onStart() {
+        super.onStart();
     }
 
     @Override
-    protected void loadData() {
-        get(Urls.ALL_CATEGORY, Category.class);
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override
-    protected void reLoad() {
-        this.loadData();
-    }
-
-
-    @Override
-    public void onSuccess(Object response) {
-        resultList = ((Category) response).getResult();
-        mCategotyAdapter.initAllData(resultList);
-    }
-
-    @Override
-    public void onFailed(VolleyError error) {
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        switch (parent.getId()) {
-            case R.id.left_drawer:
-                showToast("等待接口实现");
-                break;
-            case R.id.gv_category:
-                Result result = resultList.get(position);
-                ShowDialog.showCategoryDialog(MainActivity.this, result);
-                break;
-        }
-
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     @Override
@@ -141,7 +127,7 @@ public class MainActivity extends BaseHttpActivity implements AdapterView.OnItem
 
     @Override
     protected int getContentView() {
-        return R.layout.activity_main;
+        return R.layout.activity1_category;
     }
 
     @Override
@@ -156,4 +142,22 @@ public class MainActivity extends BaseHttpActivity implements AdapterView.OnItem
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        replaceFragment(position);
+        if (mDrawerLayout.isDrawerOpen(mListView)) {
+            mDrawerLayout.closeDrawer(mListView);
+        }
+    }
+
+    private void replaceFragment(int position) {
+        fragment = new CategoryFragment();
+        ft = getFragmentManager().beginTransaction();
+        actionBar.setTitle(mList.get(position).getName());
+        Bundle bundle = new Bundle();
+        bundle.putString(Key.CID, mList.get(position).getId());
+        fragment.setArguments(bundle);
+        ft.replace(R.id.frame_content, fragment);
+        ft.commit();
+    }
 }

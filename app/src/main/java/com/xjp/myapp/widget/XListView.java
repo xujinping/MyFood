@@ -212,21 +212,21 @@ public class XListView extends ListView implements OnScrollListener {
     }
 
     /**
-     * Set last refresh time
-     *
-     * @param time
-     */
-    public void setRefreshTime(String time) {
-        mHeaderTime.setText(time);
-    }
-
-    /**
      * Set listener.
      *
      * @param listener
      */
     public void setXListViewListener(IXListViewListener listener) {
         mListener = listener;
+    }
+
+    /**
+     * Set last refresh time
+     *
+     * @param time
+     */
+    public void setRefreshTime(String time) {
+        mHeaderTime.setText(time);
     }
 
     /**
