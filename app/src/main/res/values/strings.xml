@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MyApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="drawer_open">打开</string>
+    <string name="drawer_close">关闭</string>
+
+    <string name="header_hint_refresh_normal">下拉刷新</string>
+    <string name="header_hint_refresh_ready">松手刷新数据...</string>
+    <string name="header_hint_refresh_loading">正在刷新&#8230;</string>
+    <string name="header_hint_refresh_time">上次刷新时间：</string>
+    <string name="footer_hint_load_normal">加载更多数据...</string>
+    <string name="footer_hint_load_ready">松手加载更多数据...</string>
+
+    <string name="loading">正在加载数据...</string>
+    <string name="reload">点击重试</string>
+    <string name="load_failed">T^T 加载数据失败</string>
+    <string name="label_category">分类</string>
+    <string name="mtrls">用料</string>
+    <string name="burden">调料</string>
+    <string name="step">步骤</string>
+
+</resources>

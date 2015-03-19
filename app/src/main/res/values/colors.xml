@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 主色调 -->
+    <color name="blue_color">#34a2d7</color>
+    <color name="dark_blue_color">#157dbe</color>
+    <color name="lucency">#00000000</color>
+    <color name="app_bg_color">#E7E7E7</color>
+    <!-- 透明色 -->
+    <color name="transparent">#00000000</color>
+    <!-- 白色 -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="left_menu_bg">#2F3538</color>
+    <color name="half_gray">#55aaaaaa</color>
+    <color name="zero_alpha_gray">#00FFFFFF</color>
+
+    <color name="member_border">#B2B2B2</color>
+    <!-- 黑色 -->
+    <color name="black">#000000</color>
+    <color name="baby_black">#33000000</color>
+    <!-- 红色 -->
+    <color name="red">#fffe3d1d</color>
+    <!-- 灰色 -->
+    <color name="darker_gray">#606060</color>
+    <color name="gray">#808080</color>
+    <color name="text_gray">#ff859298</color>
+    <color name="edittext_gray_bg">#B4B4B4</color>
+    <!-- <color name="btn_green_normal_bg">#99CC00</color> -->
+    <color name="btn_green_normal_bg">#4dd963</color>
+    <!-- <color name="btn_green_pressed_bg">#4dd963</color> -->
+    <color name="btn_green_pressed_bg">#669900</color>
+    <color name="text_color_gray">#ff2b5161</color>
+    <!-- 通用背景颜色 -->
+    <color name="app_bg_2">#f7f7f7</color>
+    <color name="color_888888">#888888</color>
+    <color name="color_111111">#111111</color>
+    <color name="color_e4c36b">#74a0b5</color>
+    <color name="color_73c9f5">#73c9f5</color>
+    <color name="primary_text_color">#5c5c5c</color>
+    <color name="driver">#b5b5b5</color>
+    <color name="color_bg">#f5f5f5</color>
+    <color name="tab_bg_color">#78BED2</color>
+    <color name="detail_brandselector">#FFC1E9F4</color>
+    <color name="transparent_white">#90ffffff</color>
+    <color name="color_d3effb">#D3EFFB</color>
+    <!-- 通用背景色 -->
+    <drawable name="app_bg">#ffFFFFFF</drawable>
+    <!-- 透明色 -->
+    <drawable name="transparent">#00000000</drawable>
+    <drawable name="drawable_ededed_bg">#EDEDED</drawable>
+    <drawable name="drawable_ffffff_bg">#FFFFFF</drawable>
+
+    <!-- 新闻资讯相关 -->
+    <color name="color_61c2f4">#61C2F4</color>
+
+    <!-- 健康导医相关 -->
+    <color name="color_dddddd">#DDDDDD</color>
+    <color name="color_ededed">#EDEDED</color>
+    <color name="color_666666">#666666</color>
+    <color name="color_ae2c17">#AE2C17</color>
+    <color name="color_999999">#999999</color>
+    <!-- 通用绿色按钮 -->
+    <color name="color_4dd963">#4DD963</color>
+
+    <!-- 健康档案相关 -->
+    <color name="color_fb601">#ffb601</color>
+    <color name="color_sex_btn_select">#34a2d7</color>
+    <color name="color_sex_btn_unselect">#d4d4d4</color>
+    <!-- 健康教育相关 -->
+    <color name="color_333333">#333333</color>
+    <color name="color_blue">#0099CC</color>
+    <color name="transparency">#00000000</color>
+    <color name="translucence">#25000000</color>
+    <color name="baby_blue">#80d8ff</color>
+    <color name="title_bg">#0099CC</color>
+    <!-- 浅蓝色 -->
+    <color name="color_blue_less">#32abea</color>
+    <color name="color_dfdfdf">#DFDFDF</color>
+    <color name="clolr_111111">#333333</color>
+    <color name="color_2786b7">#2786B7</color>
+    <color name="color_81be49">#81BE49</color>
+    <!-- 绿色 -->
+    <color name="color_99CC00">#99CC00</color>
+    <color name="grass_green">#7CAD2C</color>
+
+    <!-- 远程转诊服务相关 -->
+    <color name="color_61c0f4">#61C0F4</color>
+    <color name="menu_bg_pressed">#78bed2</color>
+    <color name="menu_bg">#4A97AD</color>
+    <color name="lefe_bg">#FFFFFF</color>
+    <color name="blue">#8AD5F0</color>
+
+    <!-- 预约按钮默认效果 -->
+    <color name="color_ff4f01">#FF4F01</color>
+    <!-- 预约按钮点击效果 -->
+    <color name="color_d22800">#d22800</color>
+
+    <!-- 查询按钮默认效果 -->
+    <color name="color_0087cc">#0087cc</color>
+    <!-- 查询按钮点击效果 -->
+    <color name="color_004c93">#004c93</color>
+
+    <!-- 绿色按钮点击效果 -->
+    <color name="color_469300">#469300</color>
+
+    <!-- 充值按钮默认效果 -->
+    <color name="color_fac134">#ff7cad2c</color>
+
+    <!-- 首页功能按钮效果 -->
+    <color name="color_89b443">#FF89B443</color>
+    <color name="color_157dbe">#FF157dbe</color>
+    <color name="color_34a2d7">#FF34a2d7</color>
+    <color name="color_7cad2c">#FF7cad2c</color>
+
+    <!-- 家庭药箱药品分类颜色 -->
+    <color name="color_home_medicineket_34a2d7">#FF34a2d7</color>
+    <color name="color_home_medicineket_f2a74a">#FFf2a74a</color>
+    <color name="color_home_medicineket_58a605">#FF58a605</color>
+    <color name="color_home_medicineket_148f97">#FF148f97</color>
+    <!-- 日历颜色 -->
+    <color name="color_gray">#D4D4D4</color>
+    <color name="color_light_gray">#666666</color>
+    <color name="color_darkblue">#2D91C2</color>
+    <!-- 体温 -->
+    <color name="color_darkgreen">#8bc34a</color>
+    <!-- 血糖 -->
+    <color name="color_darkpink">#C663BD</color>
+    <!-- 血压 -->
+    <color name="color_darkbrown">#C87124</color>
+    <!-- 脉搏 -->
+    <color name="color_darkpurple">#6B597F</color>
+    <!-- 睡眠 -->
+    <color name="color_darkbluegreen">#329B7A</color>
+    <!-- 运动 -->
+
+    <color name="color_border">#B2B2B2</color>
+
+    <color name="color_157cbe">#29b6f6</color>
+    <!--<color name="color_157cbe">#157dbe</color>-->
+    <color name="tab_title_bg">#F5F5F5</color>
+    <color name="color_FF4D02">#FF4D02</color>
+    <color name="color_btn_blue">#29b6f6</color>
+    <color name="color_btn_blue_press">#1987b9</color>
+    <color name="color_btn_green">#8bc34a</color>
+    <color name="color_btn_green_press">#5e8531</color>
+    <color name="choose_eara_item_press_color">#f4f4f4</color>
+
+    <color name="color_ff6600">#FF6600</color>
+
+    <color name="color_orange">#FA580D</color>
+
+    <color name="color_BFE8FC">#BFE8FC</color>
+    <color name="color_d6f1fe">#d6f1fe</color>
+
+    <color name="color_fff9ed">#FFF9ED</color>
+
+    <color name="color_blue_text">#157dbe</color>
+    <color name="color_orange_text">#ff6600</color>
+    <color name="color_fff8e">#fff8e8</color>
+
+    <color name="color_157CC1">#157CC1</color>
+    <color name="color_FFA9D8F1">#FFA9D8F1</color>
+    <color name="color_FFD2EAF3">#FFD2EAF3</color>
+
+
+    <color name="dianliang_color">#ffefefef</color>
+    <color name="p_text_color">#ff494949</color>
+    <color name="lv_text_color">#ff66bba5</color>
+
+    <color name="background">#F7F4F0</color>
+    <color name="title_color">#333333</color>
+    <color name="step_color">#5c3317</color>
+
+</resources>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/switch_thumb_normal_material_light"
+    android:orientation="vertical">
+
+    <com.xjp.myapp.widget.StickyScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/img_top"
+                android:layout_width="match_parent"
+                android:layout_height="360dp"
+                android:background="@color/background_floating_material_dark"
+                android:scaleType="fitXY" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:tag="sticky">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/lm1_7" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="紫韵千千"
+                    android:textColor="@color/color_orange"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="美食达人"
+                    android:textColor="@color/text_gray"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/img_mtrls"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/mtrls_icon" />
+
+                <TextView
+                    android:id="@+id/tv_detail_big"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="wrap_content"
+                    android:text="点击步骤查看大图"
+                    android:textSize="12sp"
+                    android:textColor="@color/text_gray" />
+
+                <LinearLayout
+                    android:id="@+id/ll_cailiao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/img_mtrls"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mtrls"
+                        android:textColor="@color/step_color"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_mtrls"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"></LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/burden"
+                        android:textColor="@color/step_color"
+                        android:textSize="19sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_burden"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="5dp"
+                        android:paddingTop="5dp"></LinearLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/img_step"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ll_cailiao"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/step_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ll_cailiao"
+                    android:layout_toRightOf="@+id/img_step"
+                    android:text="@string/step"
+                    android:textColor="@color/step_color"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+            <com.xjp.myapp.widget.MyListView
+                android:id="@+id/lv_setp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/transparency"
+                android:dividerHeight="8dp"
+                android:padding="10dp"
+                android:scrollbars="none"></com.xjp.myapp.widget.MyListView>
+
+        </LinearLayout>
+
+    </com.xjp.myapp.widget.StickyScrollView>
+
+</RelativeLayout>
