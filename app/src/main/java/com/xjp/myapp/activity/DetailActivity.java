@@ -1,5 +1,14 @@
 package com.xjp.myapp.activity;
 
+import com.android.volley.toolbox.NetworkImageView;
+import com.xjp.myapp.R;
+import com.xjp.myapp.adapter.StepAdapter;
+import com.xjp.myapp.base.BaseActivity;
+import com.xjp.myapp.beans.Index.Datum;
+import com.xjp.myapp.network.VolleyHttp;
+import com.xjp.myapp.utils.Key;
+import com.xjp.myapp.widget.MyListView;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,30 +16,32 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.NetworkImageView;
-import com.xjp.myapp.R;
-import com.xjp.myapp.adapter.StepAdapter;
-import com.xjp.myapp.beans.Index.Datum;
-import com.xjp.myapp.network.VolleyHttp;
-import com.xjp.myapp.utils.Key;
-import com.xjp.myapp.widget.MyListView;
-
 /**
+ * 详细菜谱步骤页面
  * User: xjp
  * Date: 2015/3/14
  * Time: 22:18
  */
 public class DetailActivity extends BaseActivity implements View.OnClickListener {
+
     private TextView txtContent;
+
     private TextView txtBig;
+
     private NetworkImageView imgTop;
-    private Datum mData;
+
+    private Datum mData;//菜谱数据
+
     private MyListView myListView;
+
     private StepAdapter mAdapter;
+
     private LinearLayout linearLayout1;//材料
+
     private LinearLayout linearLayout2;//调料
 
     private String ingredients;//材料
+
     private String burden;//调料
 
     @Override
@@ -47,6 +58,9 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         actionBar.setTitle(mData.getTitle());
     }
 
+    /**
+     * 初始化控件
+     */
     protected void initView() {
         txtContent = (TextView) findViewById(R.id.tv_content);
         imgTop = (NetworkImageView) findViewById(R.id.img_top);
@@ -59,6 +73,9 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
 
     }
 
+    /**
+     * 初始化数据
+     */
     protected void initData() {
         Intent intent = getIntent();
         mData = (Datum) intent.getSerializableExtra(Key.DETAILS);
@@ -79,12 +96,18 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         addView(linearLayout2, items2);
     }
 
+    /**
+     * 加载数据
+     */
     protected void loadData() {
         mAdapter = new StepAdapter(this);
         mAdapter.initAllData(mData.getSteps());
         myListView.setAdapter(mAdapter);
     }
 
+    /**
+     * 得到菜谱用料的行数
+     */
     private int getLineNum(int len) {
         int line = len;
         if (0 == line % 2) {
@@ -95,7 +118,10 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         return line;
     }
 
-    //动态添加菜谱详细信息里面的 用料和调料显示布局
+
+    /**
+     * 动态添加菜谱详细信息里面的 用料和调料显示布局
+     */
     private void addView(LinearLayout layout, String items[]) {
         int len = items.length;
         int size = getLineNum(len);
@@ -127,6 +153,10 @@ public class DetailActivity extends BaseActivity implements View.OnClickListener
         }
     }
 
+
+    /**
+     * 启动 Activity
+     */
     protected void startActivity(Class<?> clszz) {
         Intent intent = new Intent(this, clszz);
         Bundle bundle = new Bundle();

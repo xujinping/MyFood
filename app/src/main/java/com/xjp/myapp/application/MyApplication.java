@@ -7,12 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 应用的Application
  * User: xjp
  * Date: 2015/3/7
  * Time: 17:40
  */
 public class MyApplication extends Application {
+
     private List<Activity> activities;
+
     public static MyApplication instance;
 
     @Override
@@ -25,8 +28,6 @@ public class MyApplication extends Application {
 
     /**
      * 添加 Activity 到 List 列表
-     *
-     * @param activity
      */
     public void addActivity(Activity activity) {
         synchronized (this) {
@@ -36,8 +37,6 @@ public class MyApplication extends Application {
 
     /**
      * 从 List 列表中移除 Activity
-     *
-     * @param activity
      */
     public void removeActivity(Activity activity) {
         synchronized (this) {

@@ -4,15 +4,26 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Datum implements Serializable{
+/**
+ * 数据详情可参考 (http://www.juhe.cn/docs/api/id/46)
+ * Create by xjp
+ */
+public class Datum implements Serializable {
 
     private String id;
+
     private String title;
+
     private String tags;
+
     private String imtro;
+
     private String ingredients;
+
     private String burden;
+
     private List<String> albums = new ArrayList<String>();
+
     private List<Step> steps = new ArrayList<Step>();
 
     /**

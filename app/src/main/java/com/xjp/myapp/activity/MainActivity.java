@@ -1,5 +1,17 @@
 package com.xjp.myapp.activity;
 
+import com.android.volley.VolleyError;
+import com.xjp.materiallibrary.drawerlayout.ActionBarDrawerToggle;
+import com.xjp.materiallibrary.drawerlayout.DrawerArrowDrawable;
+import com.xjp.myapp.R;
+import com.xjp.myapp.adapter.MainAdapter;
+import com.xjp.myapp.adapter.MainDrawerAdapter;
+import com.xjp.myapp.base.BaseHttpActivity;
+import com.xjp.myapp.beans.Category.Category;
+import com.xjp.myapp.beans.Category.Result;
+import com.xjp.myapp.utils.ShowDialog;
+import com.xjp.myapp.utils.Urls;
+
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -10,31 +22,29 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
 
-import com.android.volley.VolleyError;
-import com.xjp.materiallibrary.drawerlayout.ActionBarDrawerToggle;
-import com.xjp.materiallibrary.drawerlayout.DrawerArrowDrawable;
-import com.xjp.myapp.R;
-import com.xjp.myapp.adapter.MainAdapter;
-import com.xjp.myapp.adapter.MainDrawerAdapter;
-import com.xjp.myapp.beans.Category.Category;
-import com.xjp.myapp.beans.Category.Result;
-import com.xjp.myapp.utils.ShowDialog;
-import com.xjp.myapp.utils.Urls;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainActivity extends BaseHttpActivity implements AdapterView.OnItemClickListener {
 
+    //侧滑菜单
     private DrawerLayout mDrawerLayout;
+
     private GridView mGridView;
+
     private MainAdapter mCategotyAdapter;
+
     private List<Result> resultList;
+
     private ListView mListView;
+
     private DrawerArrowDrawable drawerArrow;
+
     private ActionBarDrawerToggle mDrawerToggle;
+
     private MainDrawerAdapter mainDrawerAdapter;
+
     private List<String> listData;
 
     @Override
@@ -76,7 +86,6 @@ public class MainActivity extends BaseHttpActivity implements AdapterView.OnItem
 
     @Override
     protected void initData() {
-
         mainDrawerAdapter = new MainDrawerAdapter(this);
         listData = new ArrayList<>();
         listData.add("设置");
@@ -121,6 +130,7 @@ public class MainActivity extends BaseHttpActivity implements AdapterView.OnItem
                 break;
             case R.id.gv_category:
                 Result result = resultList.get(position);
+                //弹出分类的对话框
                 ShowDialog.showCategoryDialog(MainActivity.this, result);
                 break;
         }

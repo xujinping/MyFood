@@ -11,6 +11,7 @@ import com.android.volley.VolleyError;
 import com.xjp.myapp.R;
 import com.xjp.myapp.activity.DetailActivity;
 import com.xjp.myapp.adapter.CategoryAdapter;
+import com.xjp.myapp.base.BaseHttpFragment;
 import com.xjp.myapp.beans.Index.Datum;
 import com.xjp.myapp.beans.Index.Index;
 import com.xjp.myapp.utils.Key;
@@ -53,7 +54,7 @@ public class CategoryFragment extends BaseHttpFragment implements AdapterView.On
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_category, null);
+        View view = inflater.inflate(R.layout.activity_search_result, null);
         mListView = (XListView) view.findViewById(R.id.lv_category);
         mListView.setOnItemClickListener(this);
         mListView.setPullRefreshEnable(true);

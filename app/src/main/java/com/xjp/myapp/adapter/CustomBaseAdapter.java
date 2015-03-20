@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 数据适配器基础类
  * User: xjp
  * Date: 2015/3/8
  * Time: 11:48
@@ -16,6 +17,7 @@ import java.util.List;
 public abstract class CustomBaseAdapter<T> extends BaseAdapter {
 
     protected List<T> mList;
+
     private Context mContext;
 
     public CustomBaseAdapter(Context context) {
@@ -25,8 +27,6 @@ public abstract class CustomBaseAdapter<T> extends BaseAdapter {
 
     /**
      * 初始化适配器数据
-     *
-     * @param list
      */
     public void initAllData(List<T> list) {
         if (null != mList) {
@@ -40,8 +40,6 @@ public abstract class CustomBaseAdapter<T> extends BaseAdapter {
 
     /**
      * 在末尾追加数据
-     *
-     * @param list
      */
     public void addDataAtEnd(List<T> list) {
         if (null != list) {
@@ -62,8 +60,6 @@ public abstract class CustomBaseAdapter<T> extends BaseAdapter {
 
     /**
      * 从头部添加数据
-     *
-     * @param list
      */
     public void addDataAtStart(List<T> list) {
         mList.addAll(0, list);
@@ -90,5 +86,12 @@ public abstract class CustomBaseAdapter<T> extends BaseAdapter {
         return CustomHoldView(position, convertView, parent);
     }
 
+    /**
+     * 适配器中 getView 中实现的抽象方法
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     public abstract View CustomHoldView(int position, View convertView, ViewGroup parent);
 }

@@ -1,20 +1,19 @@
 package com.xjp.myapp.adapter;
 
+import com.android.volley.toolbox.NetworkImageView;
+import com.xjp.myapp.R;
+import com.xjp.myapp.beans.Index.Datum;
+import com.xjp.myapp.network.VolleyHttp;
+import com.xjp.myapp.widget.ViewHolder;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.NetworkImageView;
-import com.xjp.myapp.R;
-import com.xjp.myapp.View.ViewHolder;
-import com.xjp.myapp.beans.Index.Datum;
-import com.xjp.myapp.network.VolleyHttp;
-import com.xjp.myapp.utils.MyLog;
-
 /**
- * Description:
+ * Description: 菜谱分类适配器
  * User: xjp
  * Date: 2015/3/13
  * Time: 13:52
@@ -37,7 +36,8 @@ public class CategoryAdapter extends CustomBaseAdapter<Datum> {
         TextView txtTitle = ViewHolder.get(convertView, R.id.tv_item_food_title);
         TextView txtTep = ViewHolder.get(convertView, R.id.tv_item_food_tep);
         String url = mList.get(position).getAlbums().get(0);
-        VolleyHttp.getInstance().displayImage(img, url, R.drawable.ic_default, R.drawable.ic_default);
+        VolleyHttp.getInstance()
+                .displayImage(img, url, R.drawable.ic_default, R.drawable.ic_default);
         txtTitle.setText(mList.get(position).getTitle());
         if (null != mList.get(position).getSteps()) {
             txtTep.setText(mList.get(position).getSteps().size() + "步");

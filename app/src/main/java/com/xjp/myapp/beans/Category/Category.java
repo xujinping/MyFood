@@ -3,11 +3,18 @@ package com.xjp.myapp.beans.Category;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 菜谱分类信息 数据详情可参考 (http://www.juhe.cn/docs/api/id/46)
+ * Create by xjp
+ */
 public class Category {
 
     private String resultcode;
+
     private String reason;
+
     private List<Result> result = new ArrayList<Result>();
+
     private Integer errorCode;
 
     /**

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Description:
+ * Description: ViewPager 适配器基础类
  * User: xjp
  * Date: 2015/3/18
  * Time: 16:31

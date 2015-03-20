@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.xjp.myapp.R;
 import com.xjp.myapp.beans.Category.Result;
-import com.xjp.myapp.View.ViewHolder;
+import com.xjp.myapp.widget.ViewHolder;
 
 /**
  * Description:

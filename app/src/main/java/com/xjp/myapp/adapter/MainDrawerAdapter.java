@@ -1,5 +1,8 @@
 package com.xjp.myapp.adapter;
 
+import com.xjp.myapp.R;
+import com.xjp.myapp.widget.ViewHolder;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,17 +10,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.xjp.myapp.R;
-import com.xjp.myapp.View.ViewHolder;
-
 /**
- * Description:
+ * Description:主页侧滑菜单List适配器
  * User: xjp
  * Date: 2015/3/18
  * Time: 15:48
  */
 public class MainDrawerAdapter extends CustomBaseAdapter<String> {
+
     private int imgId[] = {R.drawable.settings_icon, R.drawable.share_icon};
+
     private Context context;
 
     public MainDrawerAdapter(Context context) {

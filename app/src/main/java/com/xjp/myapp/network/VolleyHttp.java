@@ -54,14 +54,13 @@ public class VolleyHttp {
 
     public <T> void get(final String url, final HttpResult httpResult, Class<T> clazz,
                         final Dialog dialog, final AnimationDrawable drawable) {
+        MyLog.e("VolleyHttp", url);
         FastJsonRequest<T> fastJsonRequest = new FastJsonRequest<T>(url, null, null, clazz, new Response.Listener<T>() {
             @Override
             public void onResponse(T response) {
                 if (null != dialog && dialog.isShowing()) {
                     dialog.dismiss();
                 }
-                MyLog.e("VolleyHttp", url);
-                MyLog.e("VolleyHttp", response.toString());
                 httpResult.onSuccess(response);
             }
         }, new ErrorListener() {

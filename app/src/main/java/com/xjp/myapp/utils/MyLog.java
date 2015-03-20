@@ -3,9 +3,11 @@ package com.xjp.myapp.utils;
 import android.util.Log;
 
 /**
+ * 打印日志的控制
  * User: xjp
  */
 public class MyLog {
+
     private static boolean DEBUG = true;
 
     /**
