@@ -1,5 +1,7 @@
 package com.xjp.myapp.application;
 
+import com.tencent.bugly.crashreport.CrashReport;
+
 import android.app.Activity;
 import android.app.Application;
 
@@ -23,6 +25,7 @@ public class MyApplication extends Application {
         super.onCreate();
         instance = this;
         activities = new ArrayList<>();
+        initCrash();
     }
 
 
@@ -53,5 +56,16 @@ public class MyApplication extends Application {
                 activity.finish();
             }
         }
+    }
+
+    /**
+     * 利用腾讯Bugly 捕获crash代码，便于开发人员解决bug。
+     */
+    private void initCrash() {
+        String appId = "900002458";
+        boolean isDebug = true;  //true代表App处于调试阶段，false代表App发布阶段
+        CrashReport.initCrashReport(this, appId, isDebug);  //初始化SDK
+        CrashReport.setUserId("myfood");  //设置用户的唯一标识
+//        CrashReport.testJavaCrash ();//测试crash上报服务器
     }
 }

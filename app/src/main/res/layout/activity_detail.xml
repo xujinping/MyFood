@@ -82,7 +82,7 @@
                     android:layout_alignParentRight="true"
                     android:text="点击步骤查看大图"
                     android:textColor="@color/text_gray"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <LinearLayout
                     android:id="@+id/ll_cailiao"

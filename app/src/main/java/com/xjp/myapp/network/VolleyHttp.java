@@ -1,10 +1,5 @@
 package com.xjp.myapp.network;
 
-import android.app.Dialog;
-import android.graphics.drawable.AnimationDrawable;
-import android.view.View;
-import android.widget.TextView;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -17,6 +12,11 @@ import com.xjp.myapp.R;
 import com.xjp.myapp.application.MyApplication;
 import com.xjp.myapp.utils.MyLog;
 
+import android.app.Dialog;
+import android.graphics.drawable.AnimationDrawable;
+import android.view.View;
+import android.widget.TextView;
+
 import static com.android.volley.Response.ErrorListener;
 
 /**
@@ -28,7 +28,6 @@ import static com.android.volley.Response.ErrorListener;
 public class VolleyHttp {
     public RequestQueue mQueue;
     public ImageLoader imageLoader;
-    private Object object = this;
     public static VolleyHttp instance = null;
 
 
@@ -44,6 +43,13 @@ public class VolleyHttp {
         imageLoader = new ImageLoader(mQueue, new ImageCache());
     }
 
+    /**
+     * 加载网络图片
+     * @param imageView
+     * @param strImgUrl
+     * @param defaultImageResId
+     * @param failedImageResId
+     */
     public void displayImage(NetworkImageView imageView, String strImgUrl,
                              int defaultImageResId, int failedImageResId) {
         imageView.setDefaultImageResId(defaultImageResId);
@@ -52,6 +58,15 @@ public class VolleyHttp {
     }
 
 
+    /**
+     * 网络json数据请求和解析
+     * @param url
+     * @param httpResult
+     * @param clazz
+     * @param dialog
+     * @param drawable
+     * @param <T>
+     */
     public <T> void get(final String url, final HttpResult httpResult, Class<T> clazz,
                         final Dialog dialog, final AnimationDrawable drawable) {
         MyLog.e("VolleyHttp", url);
@@ -74,7 +89,20 @@ public class VolleyHttp {
                 httpResult.onFailed(error);
             }
         });
+        fastJsonRequest.setTag("tag");
         mQueue.add(fastJsonRequest);
+    }
+
+    /**
+     * TODO<取消所有含有Object tag标记的请求,退出线程循环>
+     *
+     * @throw
+     * @return void
+     * @param
+     */
+    public void cancelAll() {
+        mQueue.cancelAll("tag");
+        mQueue.stop();
     }
 
 }

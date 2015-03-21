@@ -5,6 +5,7 @@ import com.xjp.myapp.activity.CategoryActivity;
 import com.xjp.myapp.activity.MainActivity;
 import com.xjp.myapp.activity.SearchActivity;
 import com.xjp.myapp.application.MyApplication;
+import com.xjp.myapp.network.VolleyHttp;
 import com.xjp.myapp.utils.MyLog;
 
 import android.app.ActionBar;
@@ -99,6 +100,7 @@ public abstract class BaseActivity extends Activity {
         MyLog.d(TAG, "===onDestroy===");
         MyApplication.instance.removeActivity(this);
         if (this instanceof MainActivity) {
+            VolleyHttp.getInstance().cancelAll();
             MyApplication.instance.closeAllActivity();
         }
     }

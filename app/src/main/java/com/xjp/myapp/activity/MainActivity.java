@@ -25,7 +25,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * 菜谱分类主页面
+ */
 public class MainActivity extends BaseHttpActivity implements AdapterView.OnItemClickListener {
 
     //侧滑菜单
